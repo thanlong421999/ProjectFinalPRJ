@@ -36,7 +36,7 @@ a{color: white}
     <body>
 
 <center> 
-    <table>
+    <table border="1px" style="border: white">
         <thead>
             <tr>
                 <th style="text-align: center">ID</th>
@@ -52,14 +52,27 @@ a{color: white}
             <c:forEach items="${data}" var="i" varStatus="loop">
             <form action="MainController" method="POST">
                 <tr>
-                    <td style="text-align: center" height="50.5px"width="50px">${i.id}</td>
-                    <td style="text-align: center" height="50.5px" width="200px">${i.name}</td>
-                    <td style="text-align: center" height="50.5px" width="80px">${i.count}</td>
-                    <td style="text-align: center" height="50.5px"width="100px">${i.price}</td>
-                    <td style="text-align: center" height="50.5px" ><img src="${i.link}" height="70px" width="103.86px"></td>
-                    <td style="text-align: center"  height="50.5px" width="110px">
+                    <td style="text-align: center;    padding-top: 28px; padding-bottom: 28px" height="50.5px"width="50px">${i.id}</td>
+                    <td style="text-align: center;    padding-top: 28px; padding-bottom: 28px" height="50.5px" width="200px">${i.name}</td>
+                    <td style="text-align: center;    padding-top: 28px; padding-bottom: 28px" height="50.5px" width="80px">${i.count}</td>
+                    <td style="text-align: center;    padding-top: 28px; padding-bottom: 28px" height="50.5px"width="100px">${i.price}</td>
+                    <td style="text-align: center;    padding-top: 28px; padding-bottom: 28px" height="50.5px" ><img src="${i.link}" height="70px" width="103.86px"></td>
+                    <td style="text-align: center;    padding-top: 28px; padding-bottom: 28px"  height="0.5px" width="170px">
                         <form action="MainController" method="POST">
-                            <button type="submit" value="Cart&id=${i.id}" name="action">ADD CART</button>
+                            <button type="submit" value="Cart&id=${i.id}" name="action" style="
+                display: inline-block;
+                outline: 0;
+                border: none;
+                cursor: pointer;
+                padding: 0 24px;
+                border-radius: 50px;
+                min-width: 140px;
+                height: 50px;
+                font-size: 18px;
+                background-color: #fd0;
+                font-weight: 500;
+                color: #222;
+                ">ADD CART</button>
                             
                         </form>
                         </td>
