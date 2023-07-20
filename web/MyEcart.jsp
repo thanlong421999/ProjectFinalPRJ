@@ -41,12 +41,12 @@
                 <c:set var="t" value="${t+1}"/>
                 <tr>
                     <td>${t}</td>
-                    <td>${z.mobile.mobileName}</td>
+                    <td>${z.product.name}</td>
 
                     <td>
-                        <button><a href="process?num=-1&mobileId=${z.mobile.mobileId}">-</a></button>
+                        <button><a href="process?num=-1&mobileId=${z.product.id}">-</a></button>
                         <input type="text"  value="${z.quantity}"/>
-                        <button><a href="process?num=1&mobileId=${z.mobile.mobileId }">+</a></button>
+                        <button><a href="process?num=1&mobileId=${z.product.id }">+</a></button>
                     </td>
 
 
@@ -54,7 +54,7 @@
                         <td><fmt:formatNumber pattern="##.#" value="${z.quantity*z.price}"/></td>
                         <td>
                             <form action="process" method="post">
-                                <input type="hidden" name="mobileId" value="${z.mobile.mobileId}">
+                                <input type="hidden" name="mobileId" value="${z. product.id}">
                                        <input type="submit" value="Remove item"/>
                             </form>
                         </td>       

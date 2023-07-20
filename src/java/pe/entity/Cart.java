@@ -35,7 +35,7 @@ public class Cart {
 
     public Item getItemById(String id) {
         for (Item item : items) {
-            if (item.getObject().getId().equalsIgnoreCase(id)) {
+            if (item.getProduct().getId().equalsIgnoreCase(id)) {
                 return item;
             }
         }
@@ -43,8 +43,8 @@ public class Cart {
     }
 
     public void addItem(Item t) {
-        if (getItemById(t.getObject().getId()) != null) {
-            Item m = getItemById(t.getObject().getId());
+        if (getItemById(t.getProduct().getId()) != null) {
+            Item m = getItemById(t.getProduct().getId());
             m.setQuantity((m.getQuantity() + t.getQuantity()));
             
         } else {
@@ -55,7 +55,7 @@ public class Cart {
     public Float getTotal() {
         Float t = 0.0f;
         for (Item item : items) 
-            t += item.getQuantity() *item.getObject().getPrice();
+            t += item.getQuantity() *item.getProduct().getPrice();
             return t;
         }
         
