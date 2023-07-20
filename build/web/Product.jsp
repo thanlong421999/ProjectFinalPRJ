@@ -153,6 +153,7 @@
                                     <form action="MainController" method="POST">
                                         <input name="id" value="${i.id}" hidden="hidden">
                                         <button type="submit" value="Cart" name="action" style="
+
                                                 display: inline-block;
                                                 outline: 0;
                                                 border: none;

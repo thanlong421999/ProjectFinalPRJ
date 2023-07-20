@@ -41,12 +41,14 @@
                 <c:set var="t" value="${t+1}"/>
                 <tr>
                     <td>${t}</td>
+
                     <td>${z.object.name}</td>
 
                     <td>
                         <button><a href="process?num=-1&mobileId=${z.object.id}">-</a></button>
                         <input type="text"  value="${z.quantity}"/>
                         <button><a href="process?num=1&mobileId=${z.object.id }">+</a></button>
+
                     </td>
 
 
@@ -59,9 +61,6 @@
                             </form>
                         </td>       
                     </tr>
-
-
-
             </c:forEach>
         </table>
                     

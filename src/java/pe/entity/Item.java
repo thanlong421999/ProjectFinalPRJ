@@ -10,26 +10,27 @@ package pe.entity;
  * @author thanl
  */
 public class Item {
-    Product object;
+    Product product;
     int quantity;
     Float price;
 
     public Item() {
     }
 
-    public Item(Product object, int quantity, Float price) {
-        this.object = object;
+    public Item(Product product, int quantity, Float price) {
+        this.product = product;
         this.quantity = quantity;
         this.price = price;
     }
 
-    public Product getObject() {
-        return object;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setObject(Product object) {
-        this.object = object;
+    public void setProduct(Product product) {
+        this.product = product;
     }
+
 
     
 
@@ -51,7 +52,7 @@ public class Item {
 
     @Override
     public String toString() {
-        return "Item{" + "object=" + object + ", quantity=" + quantity + ", price=" + price + '}';
+        return "Item{" + "object=" + product + ", quantity=" + quantity + ", price=" + price + '}';
     }
 
 

@@ -42,14 +42,11 @@
                 <tr>
                     <td>${t}</td>
                     <td>${z.object.name}</td>
-
                     <td>
                         <button><a href="process?num=-1&mobileId=${z.object.id}">-</a></button>
                         <input type="text"  value="${z.quantity}"/>
                         <button><a href="process?num=1&mobileId=${z.object.id }">+</a></button>
                     </td>
-
-
                     <td><fmt:formatNumber pattern="##.#" value="${z.price}"/></td>
                         <td><fmt:formatNumber pattern="##.#" value="${z.quantity*z.price}"/></td>
                         <td>
