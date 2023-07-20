@@ -56,10 +56,10 @@ a{color: white}
                     <td style="text-align: center" height="50.5px" width="200px">${i.name}</td>
                     <td style="text-align: center" height="50.5px" width="80px">${i.count}</td>
                     <td style="text-align: center" height="50.5px"width="100px">${i.price}</td>
-                    <td style="text-align: center" height="50.5px" ><img src="${i.link}" height="70px"></td>
+                    <td style="text-align: center" height="50.5px" ><img src="${i.link}" height="70px" width="103.86px"></td>
                     <td style="text-align: center"  height="50.5px" width="110px">
                         <form action="MainController" method="POST">
-                            <button type="submit" value="Cart" name="action">ADD CART</button>
+                            <button type="submit" value="Cart&id=${i.id}" name="action">ADD CART</button>
                             
                         </form>
                         </td>
