@@ -6,6 +6,8 @@
 package pe.entity;
 
 import java.sql.Date;
+import java.time.LocalDate;
+import java.util.UUID;
 
 /**
  *
@@ -17,6 +19,7 @@ public class Order {
     Float totalMoney;
 
     public Order() {
+        
     }
 
     public Order(String orderID, String userID, Date OrderDate, Float totalMoney) {
@@ -25,6 +28,15 @@ public class Order {
         this.OrderDate = OrderDate;
         this.totalMoney = totalMoney;
     }
+
+    public Order(String userID, Float totalMoney) {
+        this.orderID = UUID.randomUUID().toString();
+        this.OrderDate = Date.valueOf(LocalDate.now());
+        this.userID = userID;
+        this.totalMoney = totalMoney;
+    }
+    
+    
 
     public String getOrderID() {
         return orderID;

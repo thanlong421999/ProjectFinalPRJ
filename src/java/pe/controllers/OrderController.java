@@ -6,18 +6,34 @@ package pe.controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import pe.entity.Cart;
+import pe.entity.Item;
+import pe.entity.Order;
+import pe.entity.OrderDetail;
+import pe.entity.User;
+import pe.dao.*;
+import pe.entity.Product;
+import pe.validate.OrderValidation;
 
 /**
  *
- * @author thanl
+ * @author AnataArisa
  */
-public class LogoutController extends HttpServlet {
-    private static final String LOGIN_PAGE = "login.jsp";
+@WebServlet(name = "OrderController", urlPatterns = {"/order"})
+public class OrderController extends HttpServlet {
+
+    private static OrderDAO orderDAO = new OrderDAO();
+    private static OrderDetailDAO orderDetailDAO = new OrderDetailDAO();
+    private static ProductDAO productDAO = new ProductDAO();
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -30,16 +46,39 @@ public class LogoutController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-         String url = "error.jsp";
-        try {
-            HttpSession session = request.getSession();
-            session.removeAttribute("USER");
-            url = LOGIN_PAGE;
-        } catch (Exception ex) {
-            log("Error at LogoutController: " + ex.toString());
-        } finally {
-            request.getRequestDispatcher(url).forward(request, response);
+        String message = "";
+        HttpSession session = request.getSession();
+        Cart orderCard = (Cart) session.getAttribute("cart");
+        User user = (User) session.getAttribute("USER");
+        if (user != null) {
+            if (orderCard != null) {
+                List<OrderDetail> orderDList = new ArrayList<>();
+                List<Item> itemList = orderCard.getItems();
+                Order order = new Order(user.userID, orderCard.getTotal());
+                for (Item i : itemList) {
+                    OrderDetail od = new OrderDetail(order.getOrderID(), i.getObject().getId(), i.getQuantity());
+                    if (OrderValidation.canOrderProduct(od)) {
+                        orderDList.add(od);
+                        Product p = productDAO.get(od.getProductId());
+                        if(p != null){
+                            p.setCount(p.getCount() - od.getQuantity());
+                            productDAO.update(p);
+                        }
+                    } else {
+                        message = "The product with ID: " + i.getObject().getName() + " is out of stock";
+                        break;
+                    }
+                }
+                if (message.isEmpty()) {
+                    orderDAO.create(order);
+                    for (OrderDetail o : orderDList) {
+                        orderDetailDAO.create(o);
+                    }
+                }
+            }
         }
+        request.setAttribute("message", message);
+        request.getRequestDispatcher("CartController").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
