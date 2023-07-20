@@ -28,12 +28,14 @@ public class MainController extends HttpServlet {
     private static final String ADD_CONTROLLER = "AddController";
     private static final String UPDATE = "Update";
     private static final String UPDATE_CONTROLLER = "UpdateController";
+    private static final String CART = "Cart";            
+    private static final String CART_CONTROLLER = "CartController";
     private static final String REMOVE = "Remove";
     private static final String REMOVE_CONTROLLER = "RemoveController";
     private static final String SEARCH = "Search";
     private static final String SEARCH_CONTROLLER = "SearchController";
     
-
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -58,6 +60,8 @@ public class MainController extends HttpServlet {
                 url = ADD_CONTROLLER;
             }else if(SEARCH.equals(action)){
                 url = SEARCH_CONTROLLER;
+            }else if(CART.equals(action)){
+                url = CART_CONTROLLER;
             }
 //            your code here
         } catch (Exception e) {

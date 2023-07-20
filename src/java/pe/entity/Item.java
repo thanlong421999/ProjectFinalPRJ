@@ -12,12 +12,12 @@ package pe.entity;
 public class Item {
     Object object;
     int quantity;
-    double price;
+    Float price;
 
     public Item() {
     }
 
-    public Item(Object object, int quantity, double price) {
+    public Item(Object object, int quantity, Float price) {
         this.object = object;
         this.quantity = quantity;
         this.price = price;
@@ -41,11 +41,11 @@ public class Item {
         this.quantity = quantity;
     }
 
-    public double getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
 

@@ -27,25 +27,13 @@
         <style>
 
 
-
+a{color: white}
         </style>
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="fonts/font-awesome-4.7.0/">
         <script src="https://kit.fontawesome.com/8f65a29f5e.js" crossorigin="anonymous"></script>
     </head>
     <body>
-
-
-        
-
-
-
-    
-
-
-
-
-
 
 <center> 
     <table>
@@ -69,31 +57,11 @@
                     <td style="text-align: center" height="50.5px" width="80px">${i.count}</td>
                     <td style="text-align: center" height="50.5px"width="100px">${i.price}</td>
                     <td style="text-align: center" height="50.5px" ><img src="${i.link}" height="70px"></td>
-                    <td style="text-align: center"  height="50.5px" width="110px"><form action="MainController" method="post">
-                            <button type="submit" value="Cart" name="action" style="display: inline-block;
-                                    position:  ;
-                                    outline: 0;
-                                    cursor: pointer;
-                                    padding: 5px 16px;
-                                    font-size: 14px;
-                                    font-weight: 500;
-                                    line-height: 20px;
-                                    vertical-align: middle;
-                                    border: 1px solid;
-                                    border-radius: 6px;
-                                    color: #ffffff;
-                                    background-color: #2ea44f;
-                                    border-color: #1b1f2326;
-                                    box-shadow: rgba(27, 31, 35, 0.04) 0px 1px 0px 0px, rgba(255, 255, 255, 0.25) 0px 1px 0px 0px inset;
-                                    transition: 0.2s cubic-bezier(0.3, 0, 0.5, 1);
-                                    transition-property: color, background-color, border-color;
-                                    :hover {
-                                        background-color: #2c974b;
-                                        border-color: #1b1f2326;
-                                        transition-duration: 0.1s;">Add to cart</button> 
-
-
-                            </form>
+                    <td style="text-align: center"  height="50.5px" width="110px">
+                        <form action="MainController" method="POST">
+                            <button type="submit" value="Cart" name="action">ADD CART</button>
+                            
+                        </form>
                         </td>
 
 
@@ -115,10 +83,3 @@
 
 </body>
 </html>
-<script type="text/javascript">
-    function cart(id) {
-        document.f.action = "cart?id=" + id;
-        document.f.submit( );
-
-    }
-</script>
