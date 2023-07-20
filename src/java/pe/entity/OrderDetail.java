@@ -5,6 +5,8 @@
  */
 package pe.entity;
 
+import java.util.UUID;
+
 /**
  *
  * @author thanl
@@ -22,6 +24,15 @@ public class OrderDetail {
         this.productId = productId;
         this.quantity = quantity;
     }
+
+    public OrderDetail(String orderID, String productId, int quantity) {
+        this.orderDetailID = UUID.randomUUID().toString();
+        this.orderID = orderID;
+        this.productId = productId;
+        this.quantity = quantity;
+    }
+    
+    
 
     public String getOrderDetailID() {
         return orderDetailID;

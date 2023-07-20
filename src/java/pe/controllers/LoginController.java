@@ -21,7 +21,11 @@ import pe.entity.User;
  * @author thanl
  */
 public class LoginController extends HttpServlet {
-
+    private static final String MAIN_PAGE = "ListController";
+    private static final String LOGIN_PAGE = "login.jsp";
+    private static final String ERROR_PAGE = "error.jsp";
+    private static final String ADMIN_PAGE = "admin.jsp";
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -34,7 +38,7 @@ public class LoginController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
          response.setContentType("text/html;charset=UTF-8");
-        
+        String url = ERROR_PAGE;
         String userID = request.getParameter("id");
         String password = request.getParameter("password");
         try {
@@ -42,15 +46,17 @@ public class LoginController extends HttpServlet {
             User user = dao.login(userID, password);
             if(user == null){
                 request.setAttribute("mess", "Invalid Username or Password ");
-                request.getRequestDispatcher("login.jsp").forward(request, response);
+                url = LOGIN_PAGE;
             }else{
                 HttpSession session = request.getSession();
-                session.setAttribute("cloud", user);
+                session.setAttribute("USER", user);
+                if(user.getRoleID().equalsIgnoreCase("AD")) url = ADMIN_PAGE;
     //            request.setAttribute("list", list);
-                request.getRequestDispatcher("ListController").forward(request, response);
+                else url = MAIN_PAGE;
             }
         } catch (Exception e) {
         }
+        request.getRequestDispatcher(url).forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -151,7 +151,8 @@
                                 <td style="text-align: center;    padding-top: 28px; padding-bottom: 28px" height="50.5px" ><img src="${i.link}" height="70px" width="103.86px"></td>
                                 <td style="text-align: center;    padding-top: 28px; padding-bottom: 28px"  height="0.5px" width="170px">
                                     <form action="MainController" method="POST">
-                                        <button type="submit" value="CartController" name="action" style="
+                                        <input name="id" value="${i.id}" hidden="hidden">
+                                        <button type="submit" value="Cart" name="action" style="
                                                 display: inline-block;
                                                 outline: 0;
                                                 border: none;
@@ -165,11 +166,8 @@
                                                 font-weight: 500;
                                                 color: #222;
                                                 ">ADD CART</button>
-
                                     </form>
                                 </td>
-
-
                             </tr>
                         </form>
                     </c:forEach>

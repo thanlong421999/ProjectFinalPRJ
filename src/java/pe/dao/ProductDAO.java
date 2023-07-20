@@ -41,13 +41,14 @@ public class ProductDAO {
 
     public Product get(String id) {
         String sql = "SELECT * FROM Product\n"
-                + "WHERE name LIKE '%?%'";
+                + "WHERE id=?";
         Connection conn = null;
         PreparedStatement pre = null;
         ResultSet re = null;
         try {
             conn = new pe.utils.DBUtils().getConnection();
             pre = conn.prepareStatement(sql);
+            pre.setString(1, id);
             re = pre.executeQuery();
             while (re.next()) {
                 return new Product(re.getString(1), re.getString(2), re.getString(3), re.getString(4), re.getFloat(5), re.getInt(6));
@@ -55,6 +56,25 @@ public class ProductDAO {
         } catch (Exception e) {
         }
         return null;
+    }
+    
+    public List<Product> searchList(String search) {
+        String sql = "SELECT * FROM Product\n"
+                + "WHERE name LIKE '%?%'";
+        Connection conn = null;
+        PreparedStatement pre = null;
+        ResultSet re = null;
+        List<Product> productList = new ArrayList<>();
+        try {
+            conn = new pe.utils.DBUtils().getConnection();
+            pre = conn.prepareStatement(sql);
+            re = pre.executeQuery();
+            while (re.next()) {
+                productList.add(new Product(re.getString(1), re.getString(2), re.getString(3), re.getString(4), re.getFloat(5), re.getInt(6)));
+            }
+        } catch (Exception e) {
+        }
+        return productList;
     }
 
     public Product create(Product data) {
