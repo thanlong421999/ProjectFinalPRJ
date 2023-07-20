@@ -22,7 +22,7 @@ public class UserDAO {
     ResultSet rs = null;
     
     public User login(String userID, String password) throws ClassNotFoundException, SQLException{
-        String query = "SELECT userID, fullName, password, roleID, status FROM tblUsers WHERE userID = ? AND password = ?";
+        String query = "SELECT * FROM Users WHERE userID = ? AND password = ?";
         try{
             conn = new DBUtils().getConnection();
             pre = conn.prepareStatement(query); 
