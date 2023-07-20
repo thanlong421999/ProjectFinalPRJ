@@ -10,15 +10,17 @@ package pe.entity;
  * @author thanl
  */
 public class OrderDetail {
-    String orderDetailID, orderID, productId;
+    private String orderDetailID, orderID, productId;
+    private int quantity;
 
     public OrderDetail() {
     }
 
-    public OrderDetail(String orderDetailID, String orderID, String productId) {
+    public OrderDetail(String orderDetailID, String orderID, String productId, int quantity) {
         this.orderDetailID = orderDetailID;
         this.orderID = orderID;
         this.productId = productId;
+        this.quantity = quantity;
     }
 
     public String getOrderDetailID() {
@@ -44,6 +46,16 @@ public class OrderDetail {
     public void setProductId(String productId) {
         this.productId = productId;
     }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+    
+    
 
     @Override
     public String toString() {

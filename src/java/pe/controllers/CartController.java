@@ -37,7 +37,9 @@ public class CartController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
-        Cart cart = new Cart();
+        Cart cart = null;
+        cart = (Cart)session.getAttribute("cart");
+        if(cart == null) cart = new Cart();
         String id = request.getParameter("id");
        
         ProductDAO dao = new ProductDAO();
