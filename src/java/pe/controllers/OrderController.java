@@ -56,7 +56,7 @@ public class OrderController extends HttpServlet {
                 List<Item> itemList = orderCard.getItems();
                 Order order = new Order(user.userID, orderCard.getTotal());
                 for (Item i : itemList) {
-                    OrderDetail od = new OrderDetail(order.getOrderID(), i.getObject().getId(), i.getQuantity());
+                    OrderDetail od = new OrderDetail(order.getOrderID(), i.getProduct().getId(), i.getQuantity());
                     if (OrderValidation.canOrderProduct(od)) {
                         orderDList.add(od);
                         Product p = productDAO.get(od.getProductId());
@@ -65,7 +65,7 @@ public class OrderController extends HttpServlet {
                             productDAO.update(p);
                         }
                     } else {
-                        message = "The product with ID: " + i.getObject().getName() + " is out of stock";
+                        message = "The product with ID: " + i.getProduct().getName() + " is out of stock";
                         break;
                     }
                 }
