@@ -9,15 +9,15 @@ package pe.entity;
  *
  * @author thanl
  */
-public class Object {
+public class Product {
     String id,name,link,brand;
      Float price;
      int count;
 
-    public Object() {
+    public Product() {
     }
 
-    public Object(String id, String name, String link, String brand, Float price, int count) {
+    public Product(String id, String name, String link, String brand, Float price, int count) {
         this.id = id;
         this.name = name;
         this.link = link;

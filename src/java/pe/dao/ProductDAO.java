@@ -11,25 +11,25 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import pe.utils.DBUtils;
-import pe.entity.Object;
+import pe.entity.Product;
 
 /**
  *
  * @author thanl
  */
-public class ObjectDAO {
+public class ProductDAO {
     Connection conn = null; 
     PreparedStatement pre = null; 
     ResultSet re = null; 
-      public List<Object> getlist() {
-        String query = "select *from Object";
+      public List<Product> getlist() {
+        String query = "select *from Product";
         try {
             conn = new DBUtils().getConnection();
             pre = conn.prepareStatement(query);
             re = pre.executeQuery();
-            List<Object> list = new ArrayList<>();
+            List<Product> list = new ArrayList<>();
             while (re.next()) {
-                Object o = new Object(re.getString(1), re.getString(2), re.getString(3), re.getString(4), re.getFloat(5), re.getInt(6));
+                Product o = new Product(re.getString(1), re.getString(2), re.getString(3), re.getString(4), re.getFloat(5), re.getInt(6));
                 list.add(o);
             }
             return list;
@@ -38,15 +38,15 @@ public class ObjectDAO {
         return null;
     }
       
-      public Object get(String id){
-      String sql ="SELECT * FROM Object\n" +
+      public Product get(String id){
+      String sql ="SELECT * FROM Product\n" +
 "WHERE name LIKE '%?%'";
           try {
               conn = new pe.utils.DBUtils().getConnection();
               pre = conn.prepareStatement(sql);
               re = pre.executeQuery();
               while(re.next())
-                  return new Object(re.getString(1), re.getString(2),re.getString(3), re.getString(4), re.getFloat(5), re.getInt(6));
+                  return new Product(re.getString(1), re.getString(2),re.getString(3), re.getString(4), re.getFloat(5), re.getInt(6));
           } catch (Exception e) {
           }
       return null;

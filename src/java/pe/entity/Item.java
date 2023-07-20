@@ -10,24 +10,24 @@ package pe.entity;
  * @author thanl
  */
 public class Item {
-    Object object;
+    Product object;
     int quantity;
     Float price;
 
     public Item() {
     }
 
-    public Item(Object object, int quantity, Float price) {
+    public Item(Product object, int quantity, Float price) {
         this.object = object;
         this.quantity = quantity;
         this.price = price;
     }
 
-    public Object getObject() {
+    public Product getObject() {
         return object;
     }
 
-    public void setObject(Object object) {
+    public void setObject(Product object) {
         this.object = object;
     }
 

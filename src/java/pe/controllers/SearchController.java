@@ -13,7 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import pe.dao.ObjectDAO;
+import pe.dao.ProductDAO;
 
 /**
  *
@@ -34,10 +34,10 @@ public class SearchController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String name = request.getParameter("name");
-        ObjectDAO dao = new ObjectDAO();
-         List<pe.entity.Object> list = dao.getlist();
-         List<pe.entity.Object> list2 = new ArrayList<>();
-         for (pe.entity.Object object : list) {
+        ProductDAO dao = new ProductDAO();
+         List<pe.entity.Product> list = dao.getlist();
+         List<pe.entity.Product> list2 = new ArrayList<>();
+         for (pe.entity.Product object : list) {
             if(object.getName().contains(name))
                 list2.add(object);
         }

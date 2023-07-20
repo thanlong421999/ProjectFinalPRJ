@@ -12,8 +12,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import pe.dao.ObjectDAO;
-import pe.entity.Object;
+import pe.dao.ProductDAO;
+import pe.entity.Product;
 
 /**
  *
@@ -33,8 +33,8 @@ public class ListController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        ObjectDAO dao = new ObjectDAO();
-        List<Object> list = dao.getlist();
+        ProductDAO dao = new ProductDAO();
+        List<Product> list = dao.getlist();
         request.setAttribute("data", list);
         request.getRequestDispatcher("Product.jsp").forward(request, response);
         

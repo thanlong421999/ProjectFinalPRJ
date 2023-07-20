@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import pe.dao.ObjectDAO;
-import pe.entity.Object;
+import pe.dao.ProductDAO;
+import pe.entity.Product;
 import pe.entity.Cart;
 import pe.entity.Item;
 
@@ -40,8 +40,8 @@ public class CartController extends HttpServlet {
         Cart cart = new Cart();
         String id = request.getParameter("id");
        
-        ObjectDAO dao = new ObjectDAO();
-        Object o = dao.get(id);
+        ProductDAO dao = new ProductDAO();
+        Product o = dao.get(id);
         Float price = o.getPrice();
         Item t = new Item(o, 1, price);
         cart.addItem(t);
