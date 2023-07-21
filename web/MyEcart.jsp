@@ -21,17 +21,23 @@
             }
 
         </style>
-
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/css2.css">
+        <link rel="stylesheet" href="css/util.css">
     </head>
     <body>
+    <center>
         <table border="1px" width="40%">
             <tr>
                 <th>No</th>
-                <th>name</th>
-                <th>quantity</th>
-                <th>price</th>
-                <th>total</th>
-                <th>action</th>
+                <th>Name</th>
+                
+                <th>Quantity</th>
+                
+                <th>Price</th>
+                <th>Total</th>
+                <th>Action</th>
 
             </tr>
 
@@ -42,28 +48,33 @@
                 <tr>
                     <td>${t}</td>
                     <td>${z.product.name}</td>
+                    
                     <td>
-                        <button><a href="process?num=-1&mobileId=${z.product.id}">-</a></button>
-                        <input type="text"  value="${z.quantity}"/>
-                        <button><a href="process?num=1&mobileId=${z.product.id }">+</a></button>
+                        <form action="MainController">
+                            <input name="num" value="1">
+                            <button type="submit" name="action" value="Process">+</button>
+                        </form>
+                        <input type="text" name="num" value="${z.quantity}"/>
+                    
                     </td>
-                    <td><fmt:formatNumber pattern="##.#" value="${z.price}"/></td>
-                        <td><fmt:formatNumber pattern="##.#" value="${z.quantity*z.price}"/></td>
-                        <td>
-                            <form action="process" method="post">
-                                <input type="hidden" name="mobileId" value="${z.product.id}">
-                                       <input type="submit" value="Remove item"/>
-                            </form>
-                        </td>       
-                    </tr>
+                    
+                    <td><fmt:formatNumber pattern="##.##" value="${z.price}"/></td>
+                    <td><fmt:formatNumber pattern="##.##" value="${z.quantity*z.price}"/></td>
+                    <td>
+                        <form action="MainController" method="POST">
+                            <input type="hidden" name="id" value="${z.product.id}">
+                            <button type="submit" name="action" value="Process" style="color: red">REMOVE</button>
+                        </form>
+                    </td>       
+                </tr>
 
 
 
             </c:forEach>
         </table>
-                    
-        
-            <hr/>
-            <h3><a href="listMobile">Countinue to buy</a></h3>
-    </body>
+    </center>               
+
+    <hr/>
+    <h3><a href="ListController"  style="color:red">Countinue to buy</a></h3>
+</body>
 </html>

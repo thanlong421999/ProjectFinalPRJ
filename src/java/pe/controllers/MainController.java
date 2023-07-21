@@ -34,6 +34,9 @@ public class MainController extends HttpServlet {
     private static final String REMOVE_CONTROLLER = "RemoveController";
     private static final String SEARCH = "Search";
     private static final String SEARCH_CONTROLLER = "SearchController";
+    private static final String PROCESS = "Process";
+    private static final String PROCESS_CONTROLLER = "ProcessController";
+    
     
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -62,6 +65,9 @@ public class MainController extends HttpServlet {
                 url = SEARCH_CONTROLLER;
             }else if(CART.equals(action)){
                 url = CART_CONTROLLER;
+            }else if(PROCESS.equals(action)){
+                url = PROCESS_CONTROLLER;
+            
             }
 //            your code here
         } catch (Exception e) {
