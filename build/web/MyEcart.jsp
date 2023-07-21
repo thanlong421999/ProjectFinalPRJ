@@ -50,8 +50,8 @@
                     <td>${z.product.name}</td>
                     
                     <td>
-                        <form action="MainController">
-                            <input name="num" value="1">
+                        <form action="MainController" method="GET">
+                            <input type="hidden" name="num" value="1">
                             <button type="submit" name="action" value="Process">+</button>
                         </form>
                         <input type="text" name="num" value="${z.quantity}"/>
